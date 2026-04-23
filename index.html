@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joan Ritte — Civil Engineering Portfolio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:   #0f1923;
+    --navy2:  #1a2635;
+    --gold:   #c9a96e;
+    --gold2:  #e8c98a;
+    --slate:  #3d5166;
+    --fog:    #f2ede6;
+    --fog2:   #e8e1d6;
+    --ink:    #2a2a2a;
+    --mid:    #666;
+    --light:  #999;
+    --white:  #ffffff;
+    --radius: 3px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    background: var(--fog);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  /* ─── NAV ─────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15,25,35,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    color: var(--gold);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201,169,110,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(61,81,102,0.4) 0%, transparent 60%);
+  }
+  .hero-left {
+    padding: 140px 3.5rem 80px;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+    opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 1.2rem;
+    opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold2);
+  }
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    max-width: 420px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    opacity: 0; animation: fadeUp 0.6s 0.65s forwards;
+  }
+  .hero-tag {
+    background: rgba(201,169,110,0.12);
+    border: 1px solid rgba(201,169,110,0.3);
+    color: var(--gold2);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 0.3rem 0.75rem;
+    border-radius: 2px;
+  }
+  .hero-right {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 3.5rem 80px 2rem;
+    border-left: 1px solid rgba(255,255,255,0.05);
+  }
+  .info-block {
+    margin-bottom: 1.6rem;
+    opacity: 0; animation: fadeUp 0.6s 0.7s forwards;
+  }
+  .info-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+  .info-value {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.75);
+  }
+  .info-divider {
+    width: 40px; height: 1px;
+    background: rgba(201,169,110,0.3);
+    margin: 1.8rem 0;
+    opacity: 0; animation: fadeUp 0.6s 0.8s forwards;
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    animation: bounce 2s 1.5s infinite;
+  }
+  .hero-scroll svg { opacity: 0.4; }
+
+  /* ─── SECTIONS ────────────────────────────── */
+  section { padding: 80px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 40px; height: 2px;
+    background: var(--gold);
+  }
+
+  /* ─── ABOUT ───────────────────────────────── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    font-size: 0.97rem;
+  }
+
+  /* Software table */
+  .sw-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.83rem;
+  }
+  .sw-table thead tr {
+    background: var(--navy);
+    color: var(--white);
+  }
+  .sw-table th {
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .sw-table td {
+    padding: 0.65rem 0.9rem;
+    border-bottom: 1px solid var(--fog2);
+    vertical-align: top;
+  }
+  .sw-table tbody tr:nth-child(odd) { background: var(--fog); }
+  .sw-table tbody tr:nth-child(even) { background: var(--white); }
+  .sw-table .sw-name { font-weight: 600; color: var(--navy); }
+  .sw-table .sw-level {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+  }
+  .sw-table .sw-used { color: var(--mid); }
+
+  /* ─── PROJECTS ────────────────────────────── */
+  #projects { background: var(--fog); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: var(--fog2);
+    border: 1.5px solid var(--fog2);
+  }
+  .project-card {
+    background: var(--white);
+    padding: 2rem 2rem 1.6rem;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(15,25,35,0.10);
+    z-index: 2;
+  }
+  .project-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3rem;
+    color: var(--fog2);
+    line-height: 1;
+    position: absolute; top: 1.4rem; right: 1.6rem;
+    transition: color 0.2s;
+  }
+  .project-card:hover .project-number { color: rgba(201,169,110,0.2); }
+  .project-course {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.18rem;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+    padding-right: 3rem;
+  }
+  .project-meta {
+    font-size: 0.75rem;
+    color: var(--light);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  .project-divider {
+    width: 30px; height: 1px;
+    background: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .project-desc {
+    font-size: 0.86rem;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+  }
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 0.35rem;
+  }
+  .project-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.55rem;
+    background: var(--fog);
+    border: 1px solid var(--fog2);
+    color: var(--slate);
+    border-radius: 2px;
+  }
+
+  /* ─── SKILLS ──────────────────────────────── */
+  #skills { background: var(--navy); }
+  #skills .section-title { color: var(--white); }
+  #skills .section-title::after { background: var(--gold); }
+
+  .skills-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+  }
+  .skills-table thead tr {
+    background: rgba(201,169,110,0.15);
+    border-bottom: 1px solid rgba(201,169,110,0.3);
+  }
+  .skills-table th {
+    padding: 0.7rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .skills-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    vertical-align: top;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+  .skills-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+  .skills-table .sk-area {
+    font-weight: 600;
+    color: var(--white);
+    white-space: nowrap;
+  }
+  .skills-table .sk-tools { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
+  .skills-table .sk-proj  { color: rgba(255,255,255,0.45); font-size: 0.82rem; }
+
+  /* ─── EDUCATION ───────────────────────────── */
+  #education { background: var(--fog); }
+  .edu-row {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background: var(--white);
+    padding: 2rem 2.5rem;
+    border-left: 3px solid var(--gold);
+  }
+  .edu-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+  }
+  .edu-inst {
+    font-size: 0.9rem;
+    color: var(--mid);
+    margin-top: 0.2rem;
+  }
+  .edu-date {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ─── CONTACT ─────────────────────────────── */
+  #contact {
+    background: var(--navy2);
+    padding: 60px 0;
+    text-align: center;
+  }
+  #contact .section-label { display: block; text-align: center; margin-bottom: 0.4rem; }
+  #contact .section-title {
+    color: var(--white);
+    text-align: center;
+    font-size: 1.6rem;
+    display: inline-block;
+  }
+  #contact .section-title::after { left: 50%; transform: translateX(-50%); }
+  .contact-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-top: 1.8rem;
+    display: block;
+  }
+  .contact-sub {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  footer {
+    background: var(--navy);
+    padding: 1.2rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  footer span {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ─── ANIMATIONS ──────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(6px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────── */
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 120px 1.8rem 60px; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1.4rem; }
+    .nav-links { gap: 1.2rem; }
+    .edu-row { flex-wrap: wrap; gap: 0.8rem; }
+    .edu-date { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#top">Joan Ritte</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Civil Engineering Portfolio &mdash; 2026</p>
+    <h1 class="hero-name">Joan<br><em>Ritte</em></h1>
+    <p class="hero-desc">
+      Fourth-year Civil Engineering student at NYU Abu Dhabi with hands-on experience
+      in structural analysis, BIM modelling, geotechnical design, and construction
+      project management.
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">AutoCAD</span>
+      <span class="hero-tag">Revit</span>
+      <span class="hero-tag">SAP2000</span>
+      <span class="hero-tag">RSPile</span>
+      <span class="hero-tag">Structural Design</span>
+      <span class="hero-tag">3D Modelling</span>
+      <span class="hero-tag">Python / C++</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="info-block">
+      <p class="info-label">Institution</p>
+      <p class="info-value">NYU Abu Dhabi</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Degree</p>
+      <p class="info-value">B.S. Civil Engineering</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Expected Graduation</p>
+      <p class="info-value">December 2026</p>
+    </div>
+    <div class="info-divider"></div>
+    <div class="info-block">
+      <p class="info-label">Location</p>
+      <p class="info-value">Abu Dhabi, UAE</p>
+    </div>
+    <div class="info-block">
+      <p class="info-label">Email</p>
+      <p class="info-value">jwr8804@nyu.edu</p>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="section-label">Background</p>
+        <h2 class="section-title">About Me</h2>
+        <p>
+          I am a fourth-year Civil Engineering student at NYU Abu Dhabi (Class of December 2026),
+          with hands-on experience in structural, geotechnical, and computational design.
+        </p>
+        <p>
+          My projects cover structural analysis in AutoCAD, Revit, and SAP2000; foundation
+          engineering with RSPile; steel and concrete design; construction project management;
+          and embedded programming. Across all of these I have worked both independently and
+          in teams, on projects ranging from small residential buildings to multi-storey market
+          halls and geotechnical foundation systems in Abu Dhabi.
+        </p>
+      </div>
+      <div class="reveal" style="transition-delay:0.15s">
+        <p class="section-label" style="margin-bottom:1rem;">Software</p>
+        <table class="sw-table">
+          <thead>
+            <tr>
+              <th>Software</th>
+              <th>Level</th>
+              <th>Used in</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sw-name">AutoCAD</td>
+              <td class="sw-level">Advanced</td>
+              <td class="sw-used">Structural drafting, floor plans, DXF export</td>
+            </tr>
+            <tr>
+              <td class="sw-name">Autodesk Revit</td>
+              <td class="sw-level">Advanced</td>
+              <td class="sw-used">3D BIM, structural and architectural documentation</td>
+            </tr>
+            <tr>
+              <td class="sw-name">SAP2000</td>
+              <td class="sw-level">Intermediate</td>
+              <td class="sw-used">Structural analysis: trusses, frames, slabs</td>
+            </tr>
+            <tr>
+              <td class="sw-name">RSPile</td>
+              <td class="sw-level">Intermediate</td>
+              <td class="sw-used">Pile group design, geotechnical analysis</td>
+            </tr>
+            <tr>
+              <td class="sw-name">Python / C++</td>
+              <td class="sw-level">Intermediate</td>
+              <td class="sw-used">Engineering scripting, embedded programming</td>
+            </tr>
+            <tr>
+              <td class="sw-name">Photoshop / AI tools</td>
+              <td class="sw-level">Familiar</td>
+              <td class="sw-used">Rendering, mood boards, visualisation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label reveal">Selected Work</p>
+    <h2 class="section-title reveal">Project Portfolio</h2>
+    <div class="projects-grid">
+
+      <!-- 01 -->
+      <div class="project-card reveal">
+        <span class="project-number">01</span>
+        <p class="project-course">Computer Aided Design for Civil Engineers</p>
+        <h3 class="project-title">Simple Living Abu Dhabi: Multi-Family Residential Building</h3>
+        <p class="project-meta">Fall 2025 &middot; Solo Project</p>
+        <div class="project-divider"></div>
+        <p class="project-desc">
+          Designed and documented a three-storey ACI 318-25 compliant reinforced concrete
+          residential building with six apartment units. The workflow ran from 2D drafting in
+          AutoCAD through a full 3D BIM model in Revit, covering the structural frame, pile-cap
+          foundation system, staircases, railings, and landscaping. SAP2000 analysis under
+          1.2D+1.6L confirmed all member sizes and set reinforcement requirements. Revit
+          Quantity Takeoff schedules were produced for concrete volumes, wall areas, and
+          framing counts. Revit renderings were compared with AI-generated images to evaluate
+          visualisation tools.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">AutoCAD</span>
+          <span class="project-tag">Revit</span>
+          <span class="project-tag">SAP2000</span>
+          <span class="project-tag">BIM</span>
+          <span class="project-tag">RC Design</span>
+          <span class="project-tag">Quantity Takeoff</span>
+          <span class="project-tag">Rendering</span>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="project-card reveal" style="transition-delay:0.1s">
+        <span class="project-number">02</span>
+        <p class="project-course">Civil Engineering Capstone &mdash; Structural Steel</p>
+        <h3 class="project-title">The Almas Souq: Faceted Steel Market Hall</h3>
+        <p class="project-meta">Fall 2025 &middot; Team: K. Doucoure, D. Iric, J. Ritte</p>
+        <div class="project-divider"></div>
+        <p class="project-desc">
+          Developed the structural design for The Almas Souq, a market hall inspired by the
+          diamond geometry of the Almas Marina community in Abu Dhabi. Starting from an
+          AI-generated concept image, the team developed a replicated 2D truss portal-frame
+          system (roof span 30 m, base 20 m, height approx. 13 m). Geometry was drafted in
+          AutoCAD and imported into SAP2000. Wind loads were calculated per ASCE 7-16 for
+          Exposure Category D (V = 44.5 m/s). A determinacy check found the 3D model requires
+          76 additional bracing members, with further refinement planned.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">AutoCAD</span>
+          <span class="project-tag">SAP2000</span>
+          <span class="project-tag">ASCE 7-16</span>
+          <span class="project-tag">Wind Load Design</span>
+          <span class="project-tag">Steel Trusses</span>
+          <span class="project-tag">3D Modelling</span>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="project-card reveal" style="transition-delay:0.05s">
+        <span class="project-number">03</span>
+        <p class="project-course">Foundation Engineering Design &mdash; ENGR-UH 4431</p>
+        <h3 class="project-title">Pile Group Foundation Design: Port Authority Building</h3>
+        <p class="project-meta">Fall 2025 &middot; Team: Aby Sall &amp; Joan Ritte</p>
+        <div class="project-divider"></div>
+        <p class="project-desc">
+          Designed and compared two pile group configurations for a Port Authority building
+          in Abu Dhabi using RSPile. Both used six 0.46 m diameter, 27.5 m elastic piles
+          beneath a 10x5x1 m cap carrying 3,740 kN axial and 162 kN horizontal load.
+          Configuration 1 (vertical 2x3 grid) gave 37 mm lateral displacement and axial loads
+          ranging from 300 to 910 kN per pile. Configuration 2 (four battered piles and two
+          vertical) cut lateral displacement to 3 mm and balanced loads to 500-750 kN,
+          reducing peak bending moments from 60 kN.m to 13 kN.m. Hand calculations confirmed
+          ultimate pile capacity of 5,492 kN with factors of safety of 6.0 to 7.3.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">RSPile</span>
+          <span class="project-tag">Geotechnical Analysis</span>
+          <span class="project-tag">Pile Design</span>
+          <span class="project-tag">Hand Calculations</span>
+          <span class="project-tag">Technical Reporting</span>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="project-card reveal" style="transition-delay:0.15s">
+        <span class="project-number">04</span>
+        <p class="project-course">Steel Structures Design &mdash; ENGR-UH 3430</p>
+        <h3 class="project-title">Pedestrian Walkway: Steel Truss and Connection Design</h3>
+        <p class="project-meta">Fall 2025 &middot; Course Project</p>
+        <div class="project-divider"></div>
+        <p class="project-desc">
+          Designed a two-level pedestrian walkway bridge spanning 4 x 15 ft with a 30 ft
+          frame width, 12 ft truss depth and 20 ft column height. Full member design used
+          double-angle shapes per AISC LRFD with ASCE 7-21 load combinations for dead load
+          (6-in concrete floor slab, 4-in roof slab), floor live loads (90 psf), and 20 psf
+          MEP roof allowance. Connection design at specified joints used bolted fasteners.
+          Deliverables included full member design tables, detailed connection drawings, and
+          a steel weight estimate.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">AISC LRFD</span>
+          <span class="project-tag">ASCE 7-21</span>
+          <span class="project-tag">Steel Connections</span>
+          <span class="project-tag">Truss Analysis</span>
+          <span class="project-tag">Technical Drawing</span>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="project-card reveal" style="transition-delay:0.05s">
+        <span class="project-number">05</span>
+        <p class="project-course">Project Management &mdash; ENGR-UH 3420</p>
+        <h3 class="project-title">Residential Building: Construction Project Management</h3>
+        <p class="project-meta">Fall 2024 &middot; Team Project</p>
+        <div class="project-divider"></div>
+        <p class="project-desc">
+          Took the role of project manager for a residential building construction project in
+          Abu Dhabi. Produced a full development plan: project scope definition, Work Breakdown
+          Structure (WBS), Organizational Breakdown Structure (OBS), Responsibility Assignment
+          Matrix (RAM), Gantt chart in MS Project with critical path, resource-loaded schedule
+          based on RSMeans crew productivity data, 4D construction simulation in Navisworks,
+          quantity take-off and cost estimates, and a qualitative risk analysis with risk
+          register and risk matrix.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">MS Project</span>
+          <span class="project-tag">Navisworks 4D</span>
+          <span class="project-tag">Risk Analysis</span>
+          <span class="project-tag">Cost Estimating</span>
+          <span class="project-tag">RSMeans</span>
+          <span class="project-tag">BIM Coordination</span>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="project-card reveal" style="transition-delay:0.15s">
+        <span class="project-number">06</span>
+        <p class="project-course">Computer Programming for Engineers &mdash; Fall 2022</p>
+        <h3 class="project-title">Life Post-Stroke: Posture Monitoring Wearable Device</h3>
+        <p class="project-meta">Fall 2022 &middot; Team: J. Almasri, T. Gurudza, J. Ritte</p>
+        <div class="project-divider"></div>
+        <p class="project-desc">
+          Built an affordable posture-monitoring device for post-stroke rehabilitation patients
+          using an M5Stack microcontroller with IMU (accelerometer and gyroscope). The C++
+          program computes spinal tilt angle and compares it against safe thoracic ranges. A
+          real-time clock tracks bad posture duration before triggering vibration alerts, with
+          shorter intervals for more severe angles. An inactivity timer prompts light exercise
+          after one hour. Joan was responsible for the angle detection code and the bulk of the
+          written report.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">C++ / M5Stack</span>
+          <span class="project-tag">IMU / Sensors</span>
+          <span class="project-tag">Embedded Systems</span>
+          <span class="project-tag">Algorithm Design</span>
+          <span class="project-tag">Technical Writing</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Competencies</p>
+    <h2 class="section-title reveal">Skills Summary</h2>
+    <table class="skills-table reveal">
+      <thead>
+        <tr>
+          <th style="width:16%">Skill Area</th>
+          <th style="width:42%">Tools / Methods</th>
+          <th style="width:42%">Project Context</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sk-area">2D Drawing</td>
+          <td class="sk-tools">AutoCAD: layers, grids, annotation, DXF export</td>
+          <td class="sk-proj">Residential building, market hall</td>
+        </tr>
+        <tr>
+          <td class="sk-area">3D BIM Modelling</td>
+          <td class="sk-tools">Revit: structural frame, slabs, foundations, landscaping</td>
+          <td class="sk-proj">Multi-storey BIM models with quantity take-off sheets</td>
+        </tr>
+        <tr>
+          <td class="sk-area">Structural Analysis</td>
+          <td class="sk-tools">SAP2000: static analysis, load combinations, member sizing</td>
+          <td class="sk-proj">RC frame and steel truss under gravity and wind loads</td>
+        </tr>
+        <tr>
+          <td class="sk-area">Geotechnical Design</td>
+          <td class="sk-tools">RSPile: pile group analysis, displacement, bending</td>
+          <td class="sk-proj">Vertical vs. battered pile comparison, Port Authority building</td>
+        </tr>
+        <tr>
+          <td class="sk-area">Steel Design</td>
+          <td class="sk-tools">AISC LRFD, ASCE 7-21: members, connections, weight estimate</td>
+          <td class="sk-proj">Pedestrian walkway bridge</td>
+        </tr>
+        <tr>
+          <td class="sk-area">Project Management</td>
+          <td class="sk-tools">MS Project, Navisworks, RSMeans: WBS, schedule, 4D BIM, cost</td>
+          <td class="sk-proj">Full construction plan, residential building Abu Dhabi</td>
+        </tr>
+        <tr>
+          <td class="sk-area">Programming</td>
+          <td class="sk-tools">C++, Python: embedded systems, algorithm design</td>
+          <td class="sk-proj">M5Stack posture-monitoring device</td>
+        </tr>
+        <tr>
+          <td class="sk-area">Visualisation</td>
+          <td class="sk-tools">Revit rendering, AI image tools, technical reporting</td>
+          <td class="sk-proj">Design presentations across all projects</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label reveal">Academic Background</p>
+    <h2 class="section-title reveal">Education</h2>
+    <div class="edu-row reveal">
+      <div>
+        <p class="edu-degree">B.S. Civil Engineering</p>
+        <p class="edu-inst">NYU Abu Dhabi &mdash; New York University</p>
+      </div>
+      <p class="edu-date">Expected December 2026</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label">Get in Touch</span>
+    <h2 class="section-title" style="margin-bottom:0">Contact</h2>
+    <a class="contact-email" href="mailto:jwr8804@nyu.edu">jwr8804@nyu.edu</a>
+    <p class="contact-sub">NYU Abu Dhabi &middot; Class of December 2026</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Joan Ritte &mdash; Civil Engineering Portfolio</span>
+  <span>NYU Abu Dhabi &middot; 2026</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Active nav link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--gold)' : '';
+    });
+  });
+</script>
+
+</body>
+</html>
